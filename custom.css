@@ -3,16 +3,41 @@ button:hover{
     background-color: #1E40AF;
 }
 
-@media (max-width: 768px) {
+input{
+    border: 1px  solid #1E40AF;
+    background-color: #dce3f9;
+    border-radius: 5px;
+}
+
+button:hover{
+    cursor: pointer;
+    background-color: transparent;
+    transform: scale(1.2);
+}
+
+@media (max-width: 640px) {
+
   main{
     flex-direction: column;
     justify-content: start;
+   
+  }
+
+  nav ul{
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem
   }
 
   #search_city_ele, #weather_display_ele{
-    max-width: 90vw;
-    min-width: 90vw;
     height: auto;
     font-size: 1.5rem;
+    max-width: 500px;
+    min-width: 380px;
   }
+
+ 
 }

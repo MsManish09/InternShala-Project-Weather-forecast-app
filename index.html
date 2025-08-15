@@ -8,34 +8,66 @@
 </head>
 <body class="bg-blue-200 box-border">
 
-  <header class="sticky bg-blue-950 flex justify-center items-center text-orange-300 text-3xl font-extrabold  h-[10vh] border border-b-orange-300">
-    <div class="navBar p-3">
+  <header class="sticky bg-blue-950 text-orange-300 font-bold border border-orange-300">
+      <!-- <nav>
+        <ul class="flex justify-around items-center h-[10vh] p-4">
+          <li>TempTrack</li>
+          <li class=" inline-block p-4 absolute">
+            
+            <button id="use_user_location" class="p-4 relative"><img src="images and resources/placeholder.png" alt="location icon"></button>
+            <input type="text" placeholder="Ex: Bengaluru" class="h-[100%]  ">
+
+            <button id="search_city" class="absolute top-1/2"><img src="images and resources/magnifying-glass.png" alt="search icon" ></button>
+          </li>
+        </ul>
+      </nav> -->
+
       <nav>
-        <h1 >Weather Forecast App</h1>
+        <ul class="flex justify-around items-center h-[12vh]">
+          <li  id="logo_list_ele" class="flex justify-center items-center">
+            <img src="images and resources/TempTrack_logo.png" alt="site logo" height="75px" width="75px">
+            <p class="text-2xl">TempTrack</p>
+          </li>
+          <li class="relative inline-block">
+
+            <button id="use_user_location" class="absolute z-20 top-1/2 left-[2px] -translate-y-1/2 mouse-pointer " title="Use Current location"><img src="images and resources/location.png" alt="location logo" height="75%"></button>
+
+            <input type="text" placeholder="Ex: Bengaluru" class="p-2 focus:outline-none pl-9 text-1xl text-blue-900">
+
+          
+
+            <button title="Search" id="search_city" class="absolute z-20 top-1/2 right-[10px] -translate-y-1/2 h-[80%]hover:outline-none"><img src="images and resources/magnifying-glass.png" alt="search logo"></button>
+          </li>
+        </ul>
       </nav>
-    </div>
+
+    
   </header>
 
   <main class="p-4 flex justify-center items-center flex-wrap min-h-[80vh] gap-4 m-4 ">
 
-    <section id="search_city_ele" class="search_ele flex  flex-col text-2xl border border- p-4 text-white w-[30%]" >
+    <!--
+    <section id="search_city_ele" class="search_ele flex   flex-col text-2xl border border-blue-950 border-solid p-4  text-white w-[25%]" >
 
       <div class="flex flex-col justify-start items-start text-blue-950">
         <label for="search_city" class="text-4xl ">Enter City Name: </label>
 
-        <input class="mt-4 ml-4 p-2 w-[90%]" type="text" id="search_city border border-white border-solid" placeholder="Bengaluru" oninput="">
+        <input class="mt-4 ml-4 p-2 w-[90%]" type="text" id="search_city border-2 border-black border-solid" placeholder="Ex: Bengaluru" oninput="">
 
         <ul id="previous_search_cities_list"></ul>
-      </div>
 
+        <button id="search" class="p-2 mt-4 bg-blue-700 w-[100%] font-bold text-white" >Search</button>
+      </div>
+    
       <div id="search_btn" class="flex justify-center items-center">
         <button id="search" class="p-2 mt-4 bg-blue-700 w-[100%] font-bold" >Search</button>
-      </div>
+      </div>  
 
-      <div class="divider w-[100%] border border-solid border-amber-50 bg-blue-950 mt-2"></div>
+      <div class="divider w-[100%] border-b-2 border-solid border-blue-900 bg-blue-950 mt-2"></div>
       <button id="use_user_location" class="bg-blue-700 w-[100%] mt-2 p-2 font-bold">Use My Location</button>
     </section>
 
+  -->
     <section id="weather_display_ele" class="w-[60%] border border-white border-solid h-[80vh]"></section>
   </main>
 </body>
