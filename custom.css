@@ -1,0 +1,18 @@
+button:hover{
+    transform: scale(1.05);
+    background-color: #1E40AF;
+}
+
+@media (max-width: 768px) {
+  main{
+    flex-direction: column;
+    justify-content: start;
+  }
+
+  #search_city_ele, #weather_display_ele{
+    max-width: 90vw;
+    min-width: 90vw;
+    height: auto;
+    font-size: 1.5rem;
+  }
+}

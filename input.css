@@ -1,0 +1,4 @@
+@import "tailwindcss";
+
+/* importing custom css file */
+@import "./custom.css"

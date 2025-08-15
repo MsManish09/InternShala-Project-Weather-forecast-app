@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="./output.css" rel="stylesheet">
+  <title>Weather Forecast App</title>
+</head>
+<body class="bg-blue-200 box-border">
+
+  <header class="sticky bg-blue-950 flex justify-center items-center text-orange-300 text-3xl font-extrabold  h-[10vh] border border-b-orange-300">
+    <div class="navBar p-3">
+      <nav>
+        <h1 >Weather Forecast App</h1>
+      </nav>
+    </div>
+  </header>
+
+  <main class="p-4 flex justify-center items-center flex-wrap min-h-[80vh] gap-4 m-4 ">
+
+    <section id="search_city_ele" class="search_ele flex  flex-col text-2xl border border- p-4 text-white w-[30%]" >
+
+      <div class="flex flex-col justify-start items-start text-blue-950">
+        <label for="search_city" class="text-4xl ">Enter City Name: </label>
+
+        <input class="mt-4 ml-4 p-2 w-[90%]" type="text" id="search_city border border-white border-solid" placeholder="Bengaluru" oninput="">
+
+        <ul id="previous_search_cities_list"></ul>
+      </div>
+
+      <div id="search_btn" class="flex justify-center items-center">
+        <button id="search" class="p-2 mt-4 bg-blue-700 w-[100%] font-bold" >Search</button>
+      </div>
+
+      <div class="divider w-[100%] border border-solid border-amber-50 bg-blue-950 mt-2"></div>
+      <button id="use_user_location" class="bg-blue-700 w-[100%] mt-2 p-2 font-bold">Use My Location</button>
+    </section>
+
+    <section id="weather_display_ele" class="w-[60%] border border-white border-solid h-[80vh]"></section>
+  </main>
+</body>
+</html>
