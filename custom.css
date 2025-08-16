@@ -39,5 +39,9 @@ button:hover{
     min-width: 380px;
   }
 
+  #search_ele{
+    margin-top: 1rem;
+  }
+
  
 }
