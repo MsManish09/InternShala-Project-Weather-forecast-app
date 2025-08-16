@@ -13,6 +13,17 @@ button:hover{
     cursor: pointer;
     background-color: transparent;
     transform: scale(1.2);
+
+}
+
+.forecast_eles{
+  min-height: 24%;
+  width: 100%;
+  border: 2px solid greenyellow;
+}
+
+#five_day_forecast::-webkit-scrollbar{
+  display: none;
 }
 
 @media (max-width: 640px) {
@@ -20,7 +31,6 @@ button:hover{
   main{
     flex-direction: column;
     justify-content: start;
-   
   }
 
   nav ul{
@@ -43,5 +53,38 @@ button:hover{
     margin-top: 1rem;
   }
 
+  #weather_display{
+    flex-direction: column;
+    width: 100vw;
+    margin-top: 0rem;
+    height: auto;
+    justify-content: start;
+    align-items:start;
+  }
+
+  #today_weather{
+    width: 100%;
+    background-color: #1E40AF;
+    min-height:500px ;
+  }
+
+  #five_day_forecast{
+    width: 100%;
+    min-height: 500px;
+    background-color: aqua;
+  }
+
+  #city_today_highlights{
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    font-size: 1rem;
+
+  }
+
+  #city_today_highlights > *{
+    margin-right: 1rem;
+    height: auto;
+  }
  
 }
