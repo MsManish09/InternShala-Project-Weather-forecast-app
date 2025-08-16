@@ -43,6 +43,11 @@ button:hover{
   border-bottom: 1px solid #DBEAFE;
 }
 
+.add_details_items{
+  display: flex ;
+  flex-direction: column;
+}
+
 
 
 
@@ -149,4 +154,42 @@ button:hover{
     border-bottom: 1px solid #BFDBFE;
   }
  
+}
+
+/* for tabs */
+@media (min-width: 768px) and (max-width: 1023px) {
+  #main_detials{
+    width: 100%;
+    height: auto;
+    justify-content: start;
+    align-items: center;
+  }
+
+  .temp_desc_container{
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    justify-content: start;
+    align-items: center;
+  }
+  .display_items{
+    flex-direction: row;
+    width: 100%;
+    height: auto;
+    justify-content: start;
+    align-items: center;
+  }
+
+  .add_details_items{
+    width: 33%;
+    /* height: 100%; */
+  }
+
+  #current_temp_desc{
+    border: none;
+    border-bottom: 1px solid #BFDBFE;
+  }
+
+  
+  
 }
