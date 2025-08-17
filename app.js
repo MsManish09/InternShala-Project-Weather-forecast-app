@@ -56,29 +56,48 @@ function standard_main_weather(weather){
 // fetching current weather details -------------
 async function fetch_current_weather_details() {
 
-    // current weather api
-    const current_weather_api = `https://api.openweathermap.org/data/2.5/weather?q=${CITY_NAME}&appid=${API_KEY}&units=metric`
+    // current weather api(using city name )
+    const using_city_name = `https://api.openweathermap.org/data/2.5/weather?q=${CITY_NAME}&appid=${API_KEY}&units=metric`
 
-    let response;
-    let data
     try{
-        response = await fetch(current_weather_api)
-
+        let response = await fetch(using_city_name)
         // if fetch fails
         if(!response.ok){
             throw new Error('Error: Server did not respond')
         }
+        let data = await response.json()
 
-        data = await response.json()
-        console.log(data)
-
-        // if city does not exist 
         if(data.cod != 200){
             throw new Error(data.message)
         }
 
+        // call to update weather
+        current_weather_DOM(data)
+
+    }
+
+    catch(error){
+        let message_block = document.querySelector('#app_message')
+        message_block.classList.remove('hidden')
+        let message = document.querySelector('#message')
+        message.textContent = error.message
+        // show the error message(if city name is invalid) or fetch fail and reload after 3sec
+        async function reload_page() {
+             new Promise(resolve =>{
+                setTimeout(() => {
+                    message_block.classList.add('hidden')
+                    window.location.reload()
+            }, 3000)
+            })
+        }
+        await reload_page()
+    } 
+}
+
+function current_weather_DOM(data){
+    // DOM -------
         let main_weather = standard_main_weather(data.weather[0].main)
-        console.log(main_weather)
+        // console.log(main_weather)
 
         // selecting elements to implemtn the data.
         // seleting the updating date and time
@@ -92,7 +111,7 @@ async function fetch_current_weather_details() {
         let cite_date = date_time[2] + ' ' + date_time[1]
         let city_time = date_time[4]
         // updating date and time of the city
-        date_time_ele.textContent = `${cite_date} ${city_time}`
+        date_time_ele.textContent = `${cite_date}  ${city_time}`
 
         // selecting city name ele and updating city name
         let location_name = document.querySelector('#city_location')
@@ -150,29 +169,6 @@ async function fetch_current_weather_details() {
         // selecting cloud cover ele
         let cloud_cover_ele = document.querySelector('#cloud_cover')
         cloud_cover_ele.textContent = data.clouds.all
-    }
-
-    catch(error){
-        let message_block = document.querySelector('#app_message')
-        message_block.classList.remove('hidden')
-        let message = document.querySelector('#message')
-        message.textContent = error.message
-        // show the error message(if city name is invalid) or fetch fail and reload after 3sec
-        async function reload_page() {
-             new Promise(resolve =>{
-                setTimeout(() => {
-                    message_block.classList.add('hidden')
-                    window.location.reload()
-            }, 3000)
-            })
-        }
-        await reload_page()
-    }
-
-    
-    // console.log(data)
-
-    
 }
 
 
@@ -308,7 +304,72 @@ city_search_btn.addEventListener('click', ()=>{
     }
 
     CITY_NAME = city_input
+    
     fetch_current_weather_details()
     fetch_5day_forecast()
 
+})
+
+// Event Listener: Getting weather forecast using user location.
+let current_user_location_btn = document.querySelector('#use_user_location')
+// console.log(current_user_location_btn)
+
+current_user_location_btn.addEventListener('click', ()=>{
+
+    let lat
+    let lon
+    // get location using browser web api
+    navigator.geolocation.getCurrentPosition((position) => {
+        lat = position.coords.latitude  
+        lon = position.coords.longitude
+
+        // console.log(`lat: ${lat}.  lon: ${lon}`)
+
+        const api = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`
+
+        async function fetch_data() {
+            try{
+                let response = await fetch(api)
+                // if fetch fails
+                if(!response.ok){
+                    throw new Error('Error: Server did not respond')
+                }
+
+                let data = await response.json()
+
+                // if city data not available, throw a error
+                if(data.cod != 200){
+                    throw new Error(data.message)
+                }
+
+                // call to update weather
+                current_weather_DOM(data)
+                // updating city name (from lat and lon)before display 5 day forecast data
+                CITY_NAME = data.name
+                fetch_5day_forecast()
+
+             }
+
+             // catch error and display error details
+            catch(error){
+                let message_block = document.querySelector('#app_message')
+                message_block.classList.remove('hidden')
+                let message = document.querySelector('#message')
+                message.textContent = error.message
+
+                // show the error message(if city name is invalid) or fetch fail and reload after 3sec
+                async function reload_page() {
+                new Promise(resolve =>{
+                    setTimeout(() => {
+                        message_block.classList.add('hidden')
+                        window.location.reload()
+                    }, 3000)
+                })
+                }
+                await reload_page()
+            }
+        }
+        fetch_data()
+    })
+ 
 })
