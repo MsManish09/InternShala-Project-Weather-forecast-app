@@ -70,92 +70,109 @@ async function fetch_current_weather_details() {
         }
 
         data = await response.json()
+        console.log(data)
 
         // if city does not exist 
-        if(data.cod !== 200){
+        if(data.cod != 200){
             throw new Error(data.message)
         }
+
+        let main_weather = standard_main_weather(data.weather[0].main)
+        console.log(main_weather)
+
+        // selecting elements to implemtn the data.
+        // seleting the updating date and time
+        let date_time_ele = document.querySelector('#today_date')
+        let date_time = Number(data.dt) // making sure the value is interger
+        date_time = new Date(date_time * 1000) // convert into milliseconds -> gets converted into date object
+
+        // convert date object into string to extract only date and time
+        date_time = date_time.toString().split(' ')
+        // console.log(date_time)
+        let cite_date = date_time[2] + ' ' + date_time[1]
+        let city_time = date_time[4]
+        // updating date and time of the city
+        date_time_ele.textContent = `${cite_date} ${city_time}`
+
+        // selecting city name ele and updating city name
+        let location_name = document.querySelector('#city_location')
+        location_name.textContent = `${data.name}, ${data.sys.country}`
+
+        // selecting highlight temp ele and updating temp
+        let city_temp = document.querySelector('#current_temp')
+        city_temp.textContent = `${data.main.temp}`
+        let city_weather_icon = document.querySelector('#today_weather_desc_logo')
+        // city_weather_icon.setAttribute('src', weather_icon[main_weather]['normal'] )
+        if (weather_icon[main_weather]) {
+            city_weather_icon.setAttribute('src', weather_icon[main_weather]['normal']);
+        } 
+
+        // fallback, if main weather icon is not present.
+        else {
+            five_day_desc_icon[i].setAttribute('src', weather_icon.Mist.normal);
+        }
+
+        // selecting main current temp ele and feel like temp ele
+        let current_temp = document.querySelector('#curr_temp_ele')
+        current_temp.textContent = `${data.main.temp}`
+
+        let feel_like_temp = document.querySelector('#feels_like_temp')
+        feel_like_temp.textContent = `${data.main.feels_like}`
+
+        // selecting current weather desc ele
+        let weather_desc_image = document.querySelector('#weather_desc_icon')
+
+        // selectig img ele and changing weather icon base on current weather
+        // weather_desc_image.setAttribute('src', weather_icon[main_weather]['highlight']);
+        if (weather_icon[main_weather]) {
+            weather_desc_image.setAttribute('src', weather_icon[main_weather]['highlight']);
+        } 
+        // fallback, if main weather icon is not present.
+        else {
+            five_day_desc_icon[i].setAttribute('src', weather_icon.Mist.normal);
+        }
+
+        let weather_desc_ele = document.querySelector('#weather_desc_text')
+        let text = data.weather[0].description
+        text = text.replace(text[0], text[0].toUpperCase()) // capitalizing the 1st letter
+        weather_desc_ele.textContent = text
+
+        // selecting humidity ele and updating
+        let humidity_ele = document.querySelector('#humidity')
+        humidity_ele.textContent = `${data.main.humidity}`
+
+        // selecting max and min temp eles and updating
+        let max_temp = document.querySelector('#temp_max')
+        let min_temp = document.querySelector('#temp_min')
+        max_temp.textContent = `${data.main.temp_max} °C`
+        min_temp.textContent = `${data.main.temp_min} °C`
+
+        // selecting cloud cover ele
+        let cloud_cover_ele = document.querySelector('#cloud_cover')
+        cloud_cover_ele.textContent = data.clouds.all
     }
 
     catch(error){
         let message_block = document.querySelector('#app_message')
         message_block.classList.remove('hidden')
         let message = document.querySelector('#message')
-        message.textContent = error
-
+        message.textContent = error.message
         // show the error message(if city name is invalid) or fetch fail and reload after 3sec
         async function reload_page() {
-            await new Promise(resolve =>{
+             new Promise(resolve =>{
                 setTimeout(() => {
-                window.location.reload()
+                    message_block.classList.add('hidden')
+                    window.location.reload()
             }, 3000)
             })
         }
-        reload_page()
+        await reload_page()
     }
+
     
-    console.log(data)
+    // console.log(data)
 
-    let main_weather = standard_main_weather(data.weather[0].main)
-    console.log(main_weather)
-
-    // selecting elements to implemtn the data.
-    // selecting city name ele and updating city name
-    let location_name = document.querySelector('#city_location')
-    location_name.textContent = `${data.name}, ${data.sys.country}`
-
-    // selecting highlight temp ele and updating temp
-    let city_temp = document.querySelector('#current_temp')
-    city_temp.textContent = `${data.main.temp}`
-    let city_weather_icon = document.querySelector('#today_weather_desc_logo')
-    // city_weather_icon.setAttribute('src', weather_icon[main_weather]['normal'] )
-    if (weather_icon[main_weather]) {
-        city_weather_icon.setAttribute('src', weather_icon[main_weather]['normal']);
-    } 
-
-    // fallback, if main weather icon is not present.
-    else {
-        five_day_desc_icon[i].setAttribute('src', weather_icon.Mist.normal);
-    }
-
-    // selecting main current temp ele and feel like temp ele
-    let current_temp = document.querySelector('#curr_temp_ele')
-    current_temp.textContent = `${data.main.temp}`
-
-    let feel_like_temp = document.querySelector('#feels_like_temp')
-    feel_like_temp.textContent = `${data.main.feels_like}`
-
-    // selecting current weather desc ele
-    let weather_desc_image = document.querySelector('#weather_desc_icon')
-
-    // selectig img ele and changing weather icon base on current weather
-    // weather_desc_image.setAttribute('src', weather_icon[main_weather]['highlight']);
-    if (weather_icon[main_weather]) {
-        weather_desc_image.setAttribute('src', weather_icon[main_weather]['highlight']);
-    } 
-    // fallback, if main weather icon is not present.
-    else {
-        five_day_desc_icon[i].setAttribute('src', weather_icon.Mist.normal);
-    }
-
-    let weather_desc_ele = document.querySelector('#weather_desc_text')
-    let text = data.weather[0].description
-    text = text.replace(text[0], text[0].toUpperCase()) // capitalizing the 1st letter
-    weather_desc_ele.textContent = text
-
-    // selecting humidity ele and updating
-    let humidity_ele = document.querySelector('#humidity')
-    humidity_ele.textContent = `${data.main.humidity}`
-
-    // selecting max and min temp eles and updating
-    let max_temp = document.querySelector('#temp_max')
-    let min_temp = document.querySelector('#temp_min')
-    max_temp.textContent = `${data.main.temp_max} °C`
-    min_temp.textContent = `${data.main.temp_min} °C`
-
-    // selecting cloud cover ele
-    let cloud_cover_ele = document.querySelector('#cloud_cover')
-    cloud_cover_ele.textContent = data.clouds.all
+    
 }
 
 
@@ -275,6 +292,7 @@ async function fetch_5day_forecast() {
     
 }
 
+// fetches and displays default city weather data
 fetch_current_weather_details() 
 fetch_5day_forecast()
 

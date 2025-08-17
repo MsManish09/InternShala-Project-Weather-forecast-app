@@ -46,8 +46,8 @@
   </header>
   <main class="mb-[4rem] h-[auto] ml-2">
 
-    <div id="app_message hidden" >
-      <h1 id="message"></h1>
+    <div id="app_message" class="hidden" >
+      <h1 id="message" class="text-4xl"></h1>
     </div>
 
     <div id="weather_display" class="w-[100%] flex flex-row h-[80vh] justify-evenly mt-4">
@@ -79,7 +79,7 @@
                 <!-- current weather temp -->
                 <div id="current_temp_desc" class="flex flex-col border-r-2 border-solid border-blue-200 p-4 ">
 
-                  <p  class=" flex text-4xl"><span id="curr_temp_ele" class="">DU</span><span
+                  <p  class=" flex text-4xl"><img src="images and resources/thermometer.png" alt=""><span id="curr_temp_ele" class="">DU</span><span
                   >°C</p>
 
                   <p class="flex font-light">feels like <span id="feels_like_temp" class="ml-2 font-bold">23</span><span class="font-bold">°C</span></p>
@@ -139,11 +139,12 @@
                 <div class="grid grid-cols-2 h-[40%] w-[100%] text-center items-center border-b-1 border-solid border-blue-200 font-bold">
                   <!-- 1st row -->
                   <div class="flex border-r-1 border-solid border-blue-200 justify-center items-center">
+                    <img src="images and resources/temperature_icon.png" alt="temperature-icon">
                     <h2 id="1st_temp" class="temp">DU</h2>
                     <h2>°C</h2>
                   </div>
                   <div class="flex p-2">
-                    <h2><img src="images and resources/cloudy 2.png" alt=""  class="forecast_weather_icon"></h2>
+                    <h2><img src="" alt=""  class="forecast_weather_icon"></h2>
                     <h2 id="1st_weather_desc" class="weather_desc ml-2">Data unavailable</h2>
                   </div>
                 </div>
@@ -168,11 +169,12 @@
                 <div class="grid grid-cols-2 h-[40%] w-[100%] text-center items-center border-b-1 border-solid border-blue-200 font-bold">
                   <!-- 1st row -->
                   <div class="flex border-r-1 border-solid border-blue-200 justify-center items-center">
+                    <img src="images and resources/temperature_icon.png" alt="temperature-icon">
                     <h2 id="2nd_temp" class="temp">DU</h2>
                     <h2>°C</h2>
                   </div>
                   <div class="flex p-2">
-                    <h2><img class="forecast_weather_icon" src="images and resources/cloudy 2.png" alt=""></h2>
+                    <h2><img class="forecast_weather_icon" src="" alt=""></h2>
                     <h2 id="2nd_weather_desc" class="weather_desc ml-2">Data unavailable</h2>
                   </div>
                 </div>
@@ -195,11 +197,12 @@
                 <div class="grid grid-cols-2 h-[40%] w-[100%] text-center items-center border-b-1 border-solid border-blue-200 font-bold">
                   <!-- 1st row -->
                   <div class="flex border-r-1 border-solid border-blue-200 justify-center items-center">
+                    <img src="images and resources/temperature_icon.png" alt="temperature-icon">
                     <h2 id="3rd_temp" class="temp">unavailable</h2>
                     <h2>°C</h2>
                   </div>
                   <div class="flex p-2">
-                    <h2><img class="forecast_weather_icon" src="images and resources/cloudy 2.png" alt=""></h2>
+                    <h2><img class="forecast_weather_icon" src="" alt=""></h2>
                     <h2 id="3rd_weather_desc" class="weather_desc ml-2">unavailable</h2>
                   </div>
                 </div>
@@ -233,11 +236,12 @@
                 <div class="grid grid-cols-2 h-[40%] w-[100%] text-center items-center border-b-1 border-solid border-blue-200 font-bold">
                   <!-- 1st row -->
                   <div class="flex border-r-1 border-solid border-blue-200 justify-center items-center">
+                    <img src="images and resources/temperature_icon.png" alt="temperature-icon">
                     <h2 id="" class="five_day_temp">DU</h2>
                     <h2>°C</h2>
                   </div>
                   <div class="flex p-2">
-                    <h2><img class="five_day_weather_desc_icon" src="images and resources/cloudy 2.png" alt=""></h2>
+                    <h2><img class="five_day_weather_desc_icon" src="" alt=""></h2>
                     <h2 id="" class="five_day_weather_desc ml-2">Data unavailable</h2>
                   </div>
                 </div>
@@ -262,11 +266,12 @@
                 <div class="grid grid-cols-2 h-[40%] w-[100%] text-center items-center border-b-1 border-solid border-blue-200 font-bold">
                   <!-- 1st row -->
                   <div class="flex border-r-1 border-solid border-blue-200 justify-center items-center">
+                    <img src="images and resources/temperature_icon.png" alt="temperature-icon">
                     <h2 id="" class="five_day_temp">DU</h2>
                     <h2>°C</h2>
                   </div>
                   <div class="flex p-2">
-                    <h2><img class="five_day_weather_desc_icon" src="images and resources/cloudy 2.png" alt=""></h2>
+                    <h2><img class="five_day_weather_desc_icon" src="" alt=""></h2>
                     <h2 id="" class="five_day_weather_desc ml-2">Data unavailable</h2>
                   </div>
                 </div>
@@ -291,11 +296,12 @@
                 <div class="grid grid-cols-2 h-[40%] w-[100%] text-center items-center border-b-1 border-solid border-blue-200 font-bold">
                   <!-- 1st row -->
                   <div class="flex border-r-1 border-solid border-blue-200 justify-center items-center">
+                    <img src="images and resources/temperature_icon.png" alt="temperature-icon">
                     <h2 id="" class="five_day_temp">DU</h2>
                     <h2>°C</h2>
                   </div>
                   <div class="flex p-2">
-                    <h2><img class="five_day_weather_desc_icon" src="images and resources/cloudy 2.png" alt=""></h2>
+                    <h2><img class="five_day_weather_desc_icon" src="" alt=""></h2>
                     <h2 id="" class="five_day_weather_desc ml-2">Data unavailable</h2>
                   </div>
                 </div>
@@ -320,11 +326,12 @@
                 <div class="grid grid-cols-2 h-[40%] w-[100%] text-center items-center border-b-1 border-solid border-blue-200 font-bold">
                   <!-- 1st row -->
                   <div class="flex border-r-1 border-solid border-blue-200 justify-center items-center">
+                    <img src="images and resources/temperature_icon.png" alt="temperature-icon">
                     <h2 id="" class="five_day_temp">DU</h2>
                     <h2>°C</h2>
                   </div>
                   <div class="flex p-2">
-                    <h2><img class="five_day_weather_desc_icon" src="images and resources/cloudy 2.png" alt=""></h2>
+                    <h2><img class="five_day_weather_desc_icon" src="" alt=""></h2>
                     <h2 id="" class="five_day_weather_desc ml-2">Data unavailable</h2>
                   </div>
                 </div>
@@ -349,11 +356,12 @@
                 <div class="grid grid-cols-2 h-[40%] w-[100%] text-center items-center border-b-1 border-solid border-blue-200 font-bold">
                   <!-- 1st row -->
                   <div class="flex border-r-1 border-solid border-blue-200 justify-center items-center">
+                    <img src="images and resources/temperature_icon.png" alt="temperature-icon">
                     <h2 id="" class="five_day_temp">DU</h2>
                     <h2>°C</h2>
                   </div>
                   <div class="flex p-2">
-                    <h2><img class="five_day_weather_desc_icon" src="images and resources/cloudy 2.png" alt=""></h2>
+                    <h2><img class="five_day_weather_desc_icon" src="" alt=""></h2>
                     <h2 id="" class="five_day_weather_desc ml-2">Data unavailable</h2>
                   </div>
                 </div>
