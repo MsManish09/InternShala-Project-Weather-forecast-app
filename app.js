@@ -27,6 +27,7 @@ let weather_icon= {
     }
 }
 
+// fetching current weather details
 async function fetch_current_weather_details() {
     let repsonse = await fetch(current_weather_api)
     let data = await repsonse.json()
@@ -93,6 +94,7 @@ async function fetch_current_weather_details() {
 
 fetch_current_weather_details()
 
+
 // fetching 5day forecast data
 async function fetch_5day_forecast() {
     let repsonse = await fetch(api_5day_forecast)
@@ -102,40 +104,38 @@ async function fetch_5day_forecast() {
     // selecting array of next 6 hours elements
     let first_block = document.querySelector('#first_block')
     let second_block = document.querySelector('#second_block')
-    let third_block = document.querySelector('#third_block')
+    let third_block = document.querySelector ('#third_block') 
     let blocks = [first_block, second_block, third_block]
+    // console.log(blocks)
 
     // selecting temp ele of forecast3 forecast with 6 hours gap) 
     let temp_eles = document.querySelectorAll('.temp')
-    console.log(temp_eles)
+    // console.log(temp_eles)
 
 
     // selecting weather desc ele and img ele of forecast3 forecast with 6 hours gap) 
     let weather_desc = document.querySelectorAll('.weather_desc')
-    console.log(weather_desc)
+    // console.log(weather_desc)
+
     // img ele
     let weather_desc_icon = document.querySelectorAll('.forecast_weather_icon')
-    console.log(weather_desc_icon)
+    // console.log(weather_desc_icon)
 
     // selecting rain ele of forecast3 forecast with 6 hours gap) 
     let rain_eles = document.querySelectorAll('.rain')
-    console.log(rain_eles)
+    // console.log(rain_eles)
 
     // selecting rain ele of forecast3 forecast with 6 hours gap) 
     let wind_eles = document.querySelectorAll('.wind')
-    console.log(wind_eles)
+    // console.log(wind_eles)
  
 
     // adding date and time of forecast(3 forecast with 6 hours gap)
-    // let count = 1 // want to ignore the [0] item, since its the current weather. which is already displayed
-    // for(let block of blocks){
-    //     block.textContent = data.list[count].dt_txt
-    //     count += 2
-    // }
 
     let count = 1 // want to ignore the [0] item, since its the current weather. which is already displayed
     // updating the entire forecast(for next 18 hours)
     for( let i = 0; i < 3; i++){
+        // console.log(data.list[count])
         blocks[i].textContent = data.list[count].dt_txt
         blocks[i].style.backgroundColor = '#93c5fd';
 
@@ -144,13 +144,71 @@ async function fetch_5day_forecast() {
         
         // finding the main weather
         let main_weather = data.list[count].weather[0].main
+        if (main_weather === 'Clear') {
+            main_weather = 'Sun';
+        }
+        if (main_weather === 'Drizzle' || main_weather === 'Thunderstorm') {
+            main_weather = 'Rain';
+        }
         weather_desc_icon[i].setAttribute('src', weather_icon[main_weather]['normal'] )
 
-        rain_eles[i].textContent = data.list[count].rain['3h'] ?? '0 mm';
+        rain_eles[i].textContent = `3h: ${data.list[count].rain?.['3h'] ?? '0 '} mm`
 
         wind_eles[i].textContent = `${data.list[count].wind.speed} km/hr`
 
         count += 2
+    }
+
+    // five day forecast blocks update
+    let fiveday_forecast_count = 1
+    let forecast_time_date_ele = document.querySelectorAll('.FDFC_date_time_ele')
+    console.log(forecast_time_date_ele)
+
+    // select temperature elements 
+    let five_day_fc_temp_ele = document.querySelectorAll('.five_day_temp')
+
+    // selecting main weather desc ele and img
+    let five_day_fc_weather_desc_ele = document.querySelectorAll('.five_day_weather_desc')
+
+    let five_day_desc_icon = document.querySelectorAll('.five_day_weather_desc_icon')
+
+    // seleting rain ele
+        let five_day_rain_ele = document.querySelectorAll('.five_day_rain')
+
+    // selecting wind ele
+    let five_day_wind_ele = document.querySelectorAll('.five_day_wind')
+
+    // updating 5day forecast elements
+    for(let i = 0; i < 5; i++){
+        // udpaing date time eles
+        forecast_time_date_ele[i].textContent = data.list[fiveday_forecast_count].dt_txt
+        forecast_time_date_ele[i].style.backgroundColor = 
+        '#93c5fd'
+
+        // updating temperature ele
+        five_day_fc_temp_ele[i].textContent = data.list[fiveday_forecast_count].main.temp
+
+        // updating weather desc ele and icon
+        five_day_fc_weather_desc_ele[i].textContent = data.list[fiveday_forecast_count].weather[0].description
+
+        let weather_main = data.list[fiveday_forecast_count].weather[0].main
+        five_day_desc_icon[i].setAttribute('src', weather_icon[weather_main]['normal'])
+        if (weather_main === 'Clear') {
+            weather_main = 'Sun';
+        }
+        if (weather_main === 'Drizzle' || weather_main === 'Thunderstorm') {
+            weather_main = 'Rain';
+        }
+        
+        // updating rain ele
+        five_day_rain_ele[i].textContent = `3h: ${data.list[fiveday_forecast_count].rain?.['3h']  ?? '0'} mm`
+
+        // updating wind ele
+        five_day_wind_ele[i].textContent = `${data.list[fiveday_forecast_count].wind.speed} km/hr`
+
+
+        // updating count for new day forecast
+        fiveday_forecast_count += 6
     }
     
 }
