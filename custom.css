@@ -48,6 +48,31 @@ button:hover{
   flex-direction: column;
 }
 
+.hidden{
+  display: none;
+}
+
+main {
+  /* position: absolute; */
+}
+
+#app_message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 350px;
+  height: 350px;
+  z-index: 1;
+  background-color: red;
+  opacity: 0.75;   /* Use 0.85 for 85% opacity */
+  color: white;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+}
+
 
 
 
