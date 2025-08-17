@@ -45,7 +45,7 @@
     
   </header>
 
-  <main class="mb-[4rem] h-screen">
+  <main class="mb-[4rem] h-[auto] ml-2">
 
     <div id="weather_display" class="w-[100%] flex flex-row h-[80vh] justify-evenly mt-4">
 
@@ -187,27 +187,27 @@
               
               <!-- 3rd next 6 hours -->
               <div class="add_details_items h-[100%]">
-                <h2 class="text-center text-1xl font-bold border-b-2 border-solid border-blue-200 p-1" id="third_block">8am - 12pm</h2>
+                <h2 class="text-center text-1xl font-bold border-b-2 border-solid border-blue-200 p-1" id="third_block">Data unavailable</h2>
                 
                 <div class="grid grid-cols-2 h-[40%] w-[100%] text-center items-center border-b-1 border-solid border-blue-200 font-bold">
                   <!-- 1st row -->
                   <div class="flex border-r-1 border-solid border-blue-200 justify-center items-center">
-                    <h2 id="3rd_temp" class="temp">25</h2>
+                    <h2 id="3rd_temp" class="temp">unavailable</h2>
                     <h2>°C</h2>
                   </div>
                   <div class="flex p-2">
                     <h2><img class="forecast_weather_icon" src="images and resources/cloudy 2.png" alt=""></h2>
-                    <h2 id="3rd_weather_desc" class="weather_desc ml-2">OverCast cloudy</h2>
+                    <h2 id="3rd_weather_desc" class="weather_desc ml-2">unavailable</h2>
                   </div>
                 </div>
 
                 <!-- 2nd row -->
                 <div class="grid grid-cols-2 h-[40%] w-[100%] text-center items-center font-bold">
                   <div class="flex border-r-1 border-solid border-blue-200 justify-center items-center">
-                    <h2>Rain: <span class="rain ml-1" id="3rd_rain">3:0.22</span></h2>
+                    <h2>Rain: <span class="rain ml-1" id="3rd_rain">unavailable</span></h2>
                   </div>
                   <div class="flex border-r-1 border-solid border-blue-200 justify-center items-center">
-                    <h2><img src="" alt="">wind: <span class="ml-1 wind" id="3rd_wind"></span></h2>
+                    <h2><img src="" alt="">wind: <span class="ml-1 wind" id="3rd_wind">unavailable</span></h2>
                   </div>
                 </div>
               </div>
@@ -219,14 +219,152 @@
       
 
       <!-- 5-day weather forecast section -->
-      <section id="five_day_forecast" class="w-[25%]  flex flex-col justify-evenly items-center overflow-y-auto gap-4 p-2  mt-[1rem]">
-        <h2 class="text-center text-2xl font-bold mb-2 text-blue-950 underline">4-DAY FORECAST</h2>
+      <section id="five_day_forecast" class="w-[30%]  flex flex-col justify-evenly items-center overflow-y-auto gap-4 p-2  mt-[1rem]">
+        <h2 class="text-center text-2xl font-bold mb-2 text-blue-950 underline">5-DAY FORECAST</h2>
+        <!-- 1st day -->
+        <div class="forecast_eles" id="day1">
+          <div class="h-[100%]">
+                <h2 class="FDFC_date_time_ele text-center text-1xl font-bold border-b-2 border-solid border-blue-200 p-1" id="">8am - 12pm</h2>
+                
+                <div class="grid grid-cols-2 h-[40%] w-[100%] text-center items-center border-b-1 border-solid border-blue-200 font-bold">
+                  <!-- 1st row -->
+                  <div class="flex border-r-1 border-solid border-blue-200 justify-center items-center">
+                    <h2 id="" class="five_day_temp">25</h2>
+                    <h2>°C</h2>
+                  </div>
+                  <div class="flex p-2">
+                    <h2><img class="five_day_weather_desc_icon" src="images and resources/cloudy 2.png" alt=""></h2>
+                    <h2 id="" class="five_day_weather_desc ml-2">OverCast cloudy</h2>
+                  </div>
+                </div>
 
-        <div class="forecast_eles" id="day1"></div>
-        <div class="forecast_eles" id="day2"></div>
-        <div class="forecast_eles" id="day3"></div>
-        <div class="forecast_eles" id="day4"></div>
-        <div class="forecast_eles" id="day5"></div>
+                <!-- 2nd row -->
+                <div class="grid grid-cols-2 h-[40%] w-[100%] text-center items-center font-bold">
+                  <div class="flex border-r-1 border-solid border-blue-200 justify-center items-center">
+                    <h2>Rain: <span class="five_day_rain ml-1" id="">3:0.22</span></h2>
+                  </div>
+                  <div class="flex border-r-1 border-solid border-blue-200 justify-center items-center">
+                    <h2>wind: <span class="ml-1 five_day_wind" id=""></span></h2>
+                  </div>
+                </div>
+              </div>
+        </div>
+
+        <!-- day 2 -->
+        <div class="forecast_eles" id="day2">
+          <div class="h-[100%]">
+                <h2 class="FDFC_date_time_ele text-center text-1xl font-bold border-b-2 border-solid border-blue-200 p-1" id="">8am - 12pm</h2>
+                
+                <div class="grid grid-cols-2 h-[40%] w-[100%] text-center items-center border-b-1 border-solid border-blue-200 font-bold">
+                  <!-- 1st row -->
+                  <div class="flex border-r-1 border-solid border-blue-200 justify-center items-center">
+                    <h2 id="" class="five_day_temp">25</h2>
+                    <h2>°C</h2>
+                  </div>
+                  <div class="flex p-2">
+                    <h2><img class="five_day_weather_desc_icon" src="images and resources/cloudy 2.png" alt=""></h2>
+                    <h2 id="" class="five_day_weather_desc ml-2">OverCast cloudy</h2>
+                  </div>
+                </div>
+
+                <!-- 2nd row -->
+                <div class="grid grid-cols-2 h-[40%] w-[100%] text-center items-center font-bold">
+                  <div class="flex border-r-1 border-solid border-blue-200 justify-center items-center">
+                    <h2>Rain: <span class="five_day_rain ml-1" id="">3:0.22</span></h2>
+                  </div>
+                  <div class="flex border-r-1 border-solid border-blue-200 justify-center items-center">
+                    <h2>wind: <span class="ml-1 five_day_wind" id=""></span></h2>
+                  </div>
+                </div>
+              </div>
+        </div>'
+        
+        <!-- day 3 -->
+        <div class="forecast_eles" id="day3">
+          <div class="h-[100%]">
+                <h2 class="FDFC_date_time_ele text-center text-1xl font-bold border-b-2 border-solid border-blue-200 p-1" id="">8am - 12pm</h2>
+                
+                <div class="grid grid-cols-2 h-[40%] w-[100%] text-center items-center border-b-1 border-solid border-blue-200 font-bold">
+                  <!-- 1st row -->
+                  <div class="flex border-r-1 border-solid border-blue-200 justify-center items-center">
+                    <h2 id="" class="five_day_temp">25</h2>
+                    <h2>°C</h2>
+                  </div>
+                  <div class="flex p-2">
+                    <h2><img class="five_day_weather_desc_icon" src="images and resources/cloudy 2.png" alt=""></h2>
+                    <h2 id="" class="five_day_weather_desc ml-2">OverCast cloudy</h2>
+                  </div>
+                </div>
+
+                <!-- 2nd row -->
+                <div class="grid grid-cols-2 h-[40%] w-[100%] text-center items-center font-bold">
+                  <div class="flex border-r-1 border-solid border-blue-200 justify-center items-center">
+                    <h2>Rain: <span class="five_day_rain ml-1" id="">3:0.22</span></h2>
+                  </div>
+                  <div class="flex border-r-1 border-solid border-blue-200 justify-center items-center">
+                    <h2><span class="ml-1 five_day_wind" id=""></span></h2>
+                  </div>
+                </div>
+              </div>
+        </div>
+
+        <!-- day 4 -->
+        <div class="forecast_eles" id="day4">
+          <div class="h-[100%]">
+                <h2 class="FDFC_date_time_ele text-center text-1xl font-bold border-b-2 border-solid border-blue-200 p-1" id="">8am - 12pm</h2>
+                
+                <div class="grid grid-cols-2 h-[40%] w-[100%] text-center items-center border-b-1 border-solid border-blue-200 font-bold">
+                  <!-- 1st row -->
+                  <div class="flex border-r-1 border-solid border-blue-200 justify-center items-center">
+                    <h2 id="" class="five_day_temp">25</h2>
+                    <h2>°C</h2>
+                  </div>
+                  <div class="flex p-2">
+                    <h2><img class="five_day_weather_desc_icon" src="images and resources/cloudy 2.png" alt=""></h2>
+                    <h2 id="" class="five_day_weather_desc ml-2">OverCast cloudy</h2>
+                  </div>
+                </div>
+
+                <!-- 2nd row -->
+                <div class="grid grid-cols-2 h-[40%] w-[100%] text-center items-center font-bold">
+                  <div class="flex border-r-1 border-solid border-blue-200 justify-center items-center">
+                    <h2>Rain: <span class="five_day_rain ml-1" id="">3:0.22</span></h2>
+                  </div>
+                  <div class="flex border-r-1 border-solid border-blue-200 justify-center items-center">
+                    <h2>wind: <span class="ml-1 five_day_wind" id=""></span></h2>
+                  </div>
+                </div>
+              </div>
+        </div>
+
+        <!-- day 5 -->
+        <div class="forecast_eles" id="day5">
+          <div class="h-[100%]">
+                <h2 class="FDFC_date_time_ele text-center text-1xl font-bold border-b-2 border-solid border-blue-200 p-1" id="">8am - 12pm</h2>
+                
+                <div class="grid grid-cols-2 h-[40%] w-[100%] text-center items-center border-b-1 border-solid border-blue-200 font-bold">
+                  <!-- 1st row -->
+                  <div class="flex border-r-1 border-solid border-blue-200 justify-center items-center">
+                    <h2 id="" class="five_day_temp">25</h2>
+                    <h2>°C</h2>
+                  </div>
+                  <div class="flex p-2">
+                    <h2><img class="five_day_weather_desc_icon" src="images and resources/cloudy 2.png" alt=""></h2>
+                    <h2 id="" class="five_day_weather_desc ml-2">OverCast cloudy</h2>
+                  </div>
+                </div>
+
+                <!-- 2nd row -->
+                <div class="grid grid-cols-2 h-[40%] w-[100%] text-center items-center font-bold">
+                  <div class="flex border-r-1 border-solid border-blue-200 justify-center items-center">
+                    <h2>Rain: <span class="five_day_rain ml-1" id="">3:0.22</span></h2>
+                  </div>
+                  <div class="flex border-r-1 border-solid border-blue-200 justify-center items-center">
+                    <h2>wind: <span class="ml-1 five_day_wind" id=""></span></h2>
+                  </div>
+                </div>
+              </div>
+        </div>
         
       </section>
     </div>
