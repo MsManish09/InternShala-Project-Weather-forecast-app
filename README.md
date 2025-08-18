@@ -44,6 +44,7 @@
 
         - later pass the latitude and longitude to api that used lat and lon to fetch weather forecast data.
 
+<<<<<<< HEAD
         ![geolocation_code_screenshot](src\README_imgs\geolocation_code_screenshot.png)
 
         - When click on the location icon in the search bar, the user current location is extracted and the forecast is displayed.
@@ -124,3 +125,10 @@
 ## Usage Instruction:
 
 ## Credits / Acknowledgments:
+=======
+        ![geolocation_code_screenshot](https://github.com/MsManish09/InternShala-Project-Weather-forecast-app/blob/6a367ed18525dd4888df3c48baa28ff2e7b9e945/README_imgs/geolocation_code_screenshot.png)
+        ![screen shorts](Screenshot%202025-08-18%20143927.png)
+        
+        
+
+>>>>>>> b7508644145f84815296383f11e2a3e88d05f8ea
