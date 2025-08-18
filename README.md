@@ -2,6 +2,30 @@
 
     Temptrack is a simple weather forecast web app that provide current weather forecast, weather forecast of next 18 hours (Split 6hours apart), and forecast of next 5 day.
 
+## API and API seletion:
+
+    - totally 3 api's are used in for this app, all form openweathermap.org.
+    - the apis are selected based on the app requirnment
+        1 - api to get weather forecast based on city name:
+            api_city_name = `https://api.openweathermap.org/data/2.5/weather?q=${CITY_NAME}&appid=${API_KEY}&units=metric`
+
+            - user inputs a city name, this api is used to fetch the data
+            - this api only fetches the current weather data, so most of this apis data is used in current weather panel
+
+        2 - api to get weather forecast using latitude and longitude:
+                api_lat_lon = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`
+
+            - this api used latitude and longitude values to fetch data.
+            - this make the api perfect to fetch details of weather forecast using current user location.
+            - only fetches current weather data.
+
+        3 - api to get weather forecast for next 5 days:
+                api_5day_forecast = `https://api.openweathermap.org/data/2.5/forecast?q=${CITY_NAME}&appid=${API_KEY}&units=metric`
+
+            - this api returns weather forecast of multiple day( i used only next 5 day forecast).
+            - it take city name to get the data.
+            - this is makes it perfect to fetch 5 day forecast data.
+
 ## Interface:
 
     - Desktop UI:
@@ -44,7 +68,6 @@
 
         - later pass the latitude and longitude to api that used lat and lon to fetch weather forecast data.
 
-<<<<<<< HEAD
         ![geolocation_code_screenshot](src\README_imgs\geolocation_code_screenshot.png)
 
         - When click on the location icon in the search bar, the user current location is extracted and the forecast is displayed.
@@ -122,13 +145,22 @@
 
 ## Tech Stack/ Built with:
 
-## Usage Instruction:
+    - HTML
+    - CSS (vanilla css)
+    - Tailwind CSS
+    - JavaScript
+    - OpenWeatherMap - for api's
 
 ## Credits / Acknowledgments:
-=======
-        ![geolocation_code_screenshot](https://github.com/MsManish09/InternShala-Project-Weather-forecast-app/blob/6a367ed18525dd4888df3c48baa28ff2e7b9e945/README_imgs/geolocation_code_screenshot.png)
-        ![screen shorts](Screenshot%202025-08-18%20143927.png)
-        
-        
 
->>>>>>> b7508644145f84815296383f11e2a3e88d05f8ea
+    - Tailwindcss.com: https://tailwindcss.com/
+        - for styling the app
+
+    - flaticon.com : https://www.flaticon.com/
+        - all the icons used are for this site.
+
+    - openweathermap.org : https://openweathermap.org/
+        - for all the weather api used in the project
+
+    - perplexicity AI and chatGPT and other sites :
+        - for research
