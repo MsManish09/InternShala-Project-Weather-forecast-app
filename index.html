@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="./output.css" rel="stylesheet">
   <title>Weather Forecast App</title>
+  <link rel="shortcut icon" href="images and resources/fevicon.png" type="image/x-icon">
 </head>
 <body class="bg-blue-200 box-border mb-4">
 
@@ -31,13 +32,16 @@
 
           <li class="relative inline-block" id="search_ele">
 
-            <button id="use_user_location" class="absolute z-20 top-1/2 left-[2px] -translate-y-1/2 mouse-pointer " title="Use Current location"><img src="images and resources/location.png" alt="location logo" height="75%"></button>
+            <button id="use_user_location" class="absolute z-1 top-1/2 left-[2px] -translate-y-1/2 mouse-pointer " title="Use Current location"><img src="images and resources/location.png" alt="location logo" height="75%"></button>
 
-            <input type="text" placeholder="Ex: Bengaluru" class="p-2 focus:outline-none pl-9 text-1xl text-blue-900" id="city_name">
+            <div>
+              <input type="text" placeholder="Ex: Bengaluru" class="p-2 focus:outline-none pl-9 text-1xl text-blue-900" id="city_name" onclick="show_recent_cities()">
+              <!-- element for previously searched cities -->
+              <ul id="previous_cities" class=" flex flex-col m-[auto] absolute top-[100%] z-10 text-center w-[100%] h-[auto] left-0 right-0 list-none text-blue-950 bg-blue-100 gap-1 rounded-[5px]">
+              </ul>
+            </div>
 
-          
-
-            <button title="Search" id="search_city" class="absolute z-20 top-1/2 right-[10px] -translate-y-1/2 h-[80%]hover:outline-none"><img src="images and resources/magnifying-glass.png" alt="search logo"></button>
+            <button title="Search" type="button" id="search_city" class="absolute z-1 top-1/2 right-[10px] -translate-y-1/2 h-[80%]hover:outline-none"><img src="images and resources/magnifying-glass.png" alt="search logo"></button>
           </li>
         </ul>
       </nav>

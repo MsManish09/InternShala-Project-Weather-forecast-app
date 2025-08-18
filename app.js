@@ -4,6 +4,27 @@
 const API_KEY = 'cb77ef33b9e8ab659ebeef8529bc7e8b'
 let CITY_NAME = 'Bengaluru' // Bengaluru would be the default city.
 
+// creating a localStorage to add recently viewed cities
+if(!localStorage.getItem('recent_cities')){
+    localStorage.setItem('recent_cities', JSON.stringify([]))
+}
+
+// function to add cities to localStorage
+function add_cities_to_recent_city_list(city){
+    let city_list = JSON.parse(localStorage.getItem('recent_cities')) || []; // if list is empty, create a empty array
+
+    // only add city ot list if it doesnot already exist in the localStorage
+    if(!city_list.includes(city)){
+        city_list.unshift(city)  // add at the 0th index
+    }
+    
+    // keep the list to only 5 cities
+    if(city_list.length > 5){
+        city_list =  city_list.slice(0, 5) // keep only latest cities
+    }
+    // save the new list
+    localStorage.setItem('recent_cities', JSON.stringify(city_list))
+}
 
 // storing weather icon address a object for dynamic use
 let weather_icon= {
@@ -70,6 +91,10 @@ async function fetch_current_weather_details() {
         if(data.cod != 200){
             throw new Error(data.message)
         }
+
+        
+        // store the city in localStorage(to show in recent search list) by pushing them into the array
+        add_cities_to_recent_city_list(CITY_NAME)
 
         // call to update weather
         current_weather_DOM(data)
@@ -294,12 +319,13 @@ fetch_5day_forecast()
 
 // Event listner - getting city name form user
 let city_search_btn = document.querySelector('#search_city')
-city_search_btn.addEventListener('click', ()=>{
+city_search_btn.addEventListener('click', (e)=>{
+    e.preventDefault();
     let city_input = document.querySelector('#city_name').value
     // console.log(city_input)
 
     if(!city_input){
-        alert('Enter city name')
+        alert('Enter City Name')
         return
     }
 
@@ -314,8 +340,8 @@ city_search_btn.addEventListener('click', ()=>{
 let current_user_location_btn = document.querySelector('#use_user_location')
 // console.log(current_user_location_btn)
 
-current_user_location_btn.addEventListener('click', ()=>{
-
+current_user_location_btn.addEventListener('click', (e)=>{
+    e.preventDefault();
     let lat
     let lon
     // get location using browser web api
@@ -344,6 +370,7 @@ current_user_location_btn.addEventListener('click', ()=>{
 
                 // call to update weather
                 current_weather_DOM(data)
+
                 // updating city name (from lat and lon)before display 5 day forecast data
                 CITY_NAME = data.name
                 fetch_5day_forecast()
@@ -373,3 +400,24 @@ current_user_location_btn.addEventListener('click', ()=>{
     })
  
 })
+
+function show_recent_cities(){
+    let city_input = document.querySelector('#city_name')
+    let recent_cities_list = document.querySelector('#previous_cities')
+
+    recent_cities_list.innerHTML = ''
+
+    let cities = JSON.parse(localStorage.getItem('recent_cities'))
+
+    for(let i = 0; i <= 4; i++){
+        let li = document.createElement('li')
+        li.textContent = cities[i]
+        li.addEventListener('click', ()=>{
+            city_input.value = cities[i]
+            recent_cities_list.innerHTML = ''
+        })
+        //add recent list to ul
+        recent_cities_list.appendChild(li)
+    }
+
+}
