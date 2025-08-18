@@ -72,7 +72,9 @@ button:hover{
   display: none ! important; /*forcing hide*/
 }
 
-
+header{
+    padding-bottom: 1rem;
+  }
 
 /* for smaller screen */
 @media (max-width: 769px) {
@@ -88,8 +90,9 @@ button:hover{
     height: auto;
     justify-content: center;
     align-items: center;
-    padding: 1rem
+    /* padding: 1rem; */
   }
+  
 
   #search_city_ele, #weather_display_ele{
     height: auto;

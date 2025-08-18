@@ -14,4 +14,4 @@
 
         - later pass the latitude and longitude to api that used lat and lon to fetch weather forecast data.
 
-
+        ![geolocation_code_screenshot](README_imgs/geolocation_code_screenshot.png)
