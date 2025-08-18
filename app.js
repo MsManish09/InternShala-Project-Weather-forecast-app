@@ -120,9 +120,27 @@ async function fetch_current_weather_details() {
 }
 
 function current_weather_DOM(data){
-    // DOM -------
+        // DOM -------
         let main_weather = standard_main_weather(data.weather[0].main)
         // console.log(main_weather)
+    
+        // Changing background color of the page based on the current weather
+        let body= document.querySelector('body')
+        let display_ele = document.querySelector('#today_weather')
+        if(main_weather == 'Clear' || main_weather == 'Haze' || main_weather == 'Sun'){
+            // body.style.backgroundColor = '#facc15'
+            display_ele.style.backgroundColor = 'rgba(254, 249, 195, 0.5)'
+        }
+        // turn light grey on cloudy days
+        if(main_weather == 'Clouds' || main_weather == 'Smoke'){
+            // body.style.backgroundColor = '#d1d5db'
+            display_ele.style.backgroundColor = '#c4cad1'
+        }
+        // turn slighty dark grey on rainy da
+        if(main_weather == 'Rain' || main_weather == 'Thunderstrom' || main_weather == 'Drizzle'){
+            // body.style.backgroundColor = '#9ca3af'
+            display_ele.style.backgroundColor = '#6b7280'
+        }
 
         // selecting elements to implemtn the data.
         // seleting the updating date and time
@@ -158,7 +176,13 @@ function current_weather_DOM(data){
 
         // selecting main current temp ele and feel like temp ele
         let current_temp = document.querySelector('#curr_temp_ele')
-        current_temp.textContent = `${data.main.temp}`
+        current_temp.textContent = data.main.temp
+        // if the temperature is 40 are more, change the backgorund color to red(signifing its to hot)
+        if( Number(data.main.temp) >= 40){
+            current_temp.style.backgroundColor = '#fb7185'
+            alert('Warning: Temperature is 40°C or above. Its extremely hot!')
+        }
+
 
         let feel_like_temp = document.querySelector('#feels_like_temp')
         feel_like_temp.textContent = `${data.main.feels_like}`
@@ -205,7 +229,7 @@ async function fetch_5day_forecast() {
 
     const response = await fetch(api_5day_forecast)
     const data = await response.json()
-    // console.log(data)
+    console.log(data)
 
     // selecting array of next 6 hours elements
     let first_block = document.querySelector('#first_block')
@@ -419,5 +443,6 @@ function show_recent_cities(){
         //add recent list to ul
         recent_cities_list.appendChild(li)
     }
+
 
 }
