@@ -125,7 +125,7 @@ function current_weather_DOM(data){
         // console.log(main_weather)
     
         // Changing background color of the page based on the current weather
-        let body= document.querySelector('body')
+        // let body= document.querySelector('body')
         let display_ele = document.querySelector('#today_weather')
         if(main_weather == 'Clear' || main_weather == 'Haze' || main_weather == 'Sun'){
             // body.style.backgroundColor = '#facc15'
@@ -443,6 +443,4 @@ function show_recent_cities(){
         //add recent list to ul
         recent_cities_list.appendChild(li)
     }
-
-
 }
